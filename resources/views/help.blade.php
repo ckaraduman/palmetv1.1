@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </head>
 <h4>&nbsp;&nbsp;&nbsp;Yardım Talep Formu</h4>
-<form method="post">
+<form action="{{Route('helpRecord')}}" method="post" enctype="multipart/form-data">
   @CSRF
 <h7>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kullanıcı Adı : <b>{{$name}}</b></h7><br>
 <h7>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kullanıcı E-Mail : <b>{{$email}}</b></h7><br><br>
@@ -17,7 +17,7 @@
   <div class="container">
   <div class="row">
     <div class="col-3">
-      <select id="dpd1" class="form-select" aria-label="Default select example" name="select1" enctype="multipart/form-data">
+      <select id="dpd1" class="form-select" aria-label="Default select example" name="select1">
         <option selected>Talep Türü</option>
         <option value="Yazılım Destek">Yazılım Destek</option>
         <option value="Donanım Destek">Donanım Destek</option>
@@ -39,7 +39,7 @@
 </div>
   <br>
   <div class="mb-3">
-    <input class="form-control" type="file" id="formFileMultiple" multiple>
+    <input class="form-control" type="file" id="formFileMultiple" name="image[]" multiple>
   </div>
 
     <input id="ch1" type="checkbox" name="level" value="acil">&nbsp;&nbsp;&nbspAcil
@@ -55,10 +55,22 @@
 $content="";
 $select1="";
 $level="";
+// $request="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $select1 = $_POST["select1"];
         $content = $_POST["text1"];
         if (isset($_POST['level'])) {$level='Acil';} else {$level='Normal';}
+
+
+        // $headers->imgName = $request->input('imgName');
+        //
+        // if (request()->hasFile('imgName')){
+        //
+        //         $imageName = $request->file('imgName')->getClientOrginalName();
+        //         $headers->imgName->storeAs('public/your_directory/',$imageName);
+        //         $headers->imgName = $imageName;
+        //
+        // }
 
         // $level=(isset($_POST['level']) && ($_POST['level'] !=0));
 

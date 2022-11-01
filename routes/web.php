@@ -22,4 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::any('hgf', 'App\Http\Controllers\PageController@index')->name('hgf');
 Route::any('help', 'App\Http\Controllers\PageController@help')->name('help');
+Route::post('helpRecord', 'App\Http\Controllers\PageController@helpRecord')->name('helpRecord');
 Route::any('target', 'App\Http\Controllers\PageController@target')->name('target');
