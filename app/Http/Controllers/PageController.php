@@ -55,81 +55,79 @@ class PageController extends Controller
 
         public function helpRecord(Request $request)
         {
-          // return $request->all();
-          // echo $request->input('select1'); --
-          // echo "<br>"; --
-          // echo $request->input('text1'); --
-//***************************************************************START
-          // echo $request->select1;
-          // echo "<br>";
-          // echo $request->text1;
-          // echo "<br>";
-          // $path = $request->photo->store('images');
-          // echo $path;
-          // echo "<br>";
-//***************************************************************END
+          echo Auth::User()->name;
+          echo "<br>";
+          echo Auth::User()->email;
+          echo "<br>";
+          echo $request->select1;
+          echo "<br>";
+          echo $request->text1;
+          echo "<br>";
 
-//-----------------------------------------------111111111111111111
-                                        // if(isset($_FILES['image'])){
-                                        //    $errors= array();
-                                        //    $file_name = $_FILES['image']['name'];
-                                        //    $file_size =$_FILES['image']['size'];
-                                        //    $file_tmp =$_FILES['image']['tmp_name'];
-                                        //    $file_type=$_FILES['image']['type'];
-                                        //
-                                        //    if($file_size > 2097152){
-                                        //       $errors[]='File size must be excately 2 MB';
-                                        //    }
-                                        //
-                                        //    if(empty($errors)==true){
-                                        //       move_uploaded_file($file_tmp,"storage/".$file_name);
-                                        //       echo "Success";
-                                        //    }else{
-                                        //       print_r($errors);
-                                        //    }
-                                        // }
+          $total = count($_FILES['image']['name']);
+          echo "Dosya(lar) başarıyla alındı!";
+          echo "<br>";
 
-//----------------------------------------------999999999999999999
+                          for( $i=0 ; $i < $total ; $i++ ) {
+                            $uniqfilename = uniqid();
+                            $tmpFilePath = $_FILES['image']['tmp_name'][$i];
 
-            //CEM
-            //$files = array_filter($_FILES['upload']['name']); //something like that to be used before processing files.
+                            //Make sure we have a file path
+                            if ($tmpFilePath != ""){
+                              //Setup our new file path
+                              // $newFilePath = "storage/" . $_FILES['image']['name'][$i];
 
-            // Count # of uploaded files in array
-            $total = count($_FILES['image']['name']);
-            $number=rand(0,1000000000);
-            $string = Str::random(30);
-            date_default_timezone_set('Europe/Istanbul');
-            $timestamp = date('Y').date('m').date('d').date('H').date('i').date('s');
-            // Loop through each file
-            for( $i=0 ; $i < $total ; $i++ ) {
+                                    $dosya_adi=basename($_FILES['image']['name'][$i]);
+                                    $isaret=".";
+                                    $pos = strrpos($dosya_adi, $isaret);
+                                    $len=strlen($dosya_adi);
+                                    $fark=$len-$pos;
+                                    $uzanti=substr($dosya_adi,$pos,$fark);
+                                    // echo $uzanti;
+                              $newFilePath = "storage/" . $uniqfilename.$uzanti;
+                              //Upload the file into the temp dir
+                              if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+                                // echo $total;
+                                // echo "<br>";
+                                // echo $tmpFilePath;
+                                // echo "<br>";
+                                // echo $newFilePath;
+                                // echo "<br>";
+                                // echo "<img src=$newFilePath width='500'>";
+                                $x=$i+1;
+                                echo "<a href=$newFilePath>Yüklenen $x. dosya</a>";
+                                echo "<br>";
+                                // echo $number.$string;
+                                // echo "<br>";
+                                // echo $timestamp;
+                                // echo "<br>";
+                                echo $uniqfilename;
+                                echo "<br>";
+                                // echo $test1;
+                                // echo "<br>";
+                                // echo $test2;
+                                // echo "<br>";
 
-              //Get the temp file path
-              $tmpFilePath = $_FILES['image']['tmp_name'][$i];
-
-              //Make sure we have a file path
-              if ($tmpFilePath != ""){
-                //Setup our new file path
-                $newFilePath = "storage/" . $_FILES['image']['name'][$i];
-
-                //Upload the file into the temp dir
-                if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-
-                  echo "Dosya(lar) başarıyla kaydedildi!";
-                  echo "<br>";
-                  echo $total;
-                  echo "<br>";
-                  echo $tmpFilePath;
-                  echo "<br>";
-                  echo $newFilePath;
-                  echo "<br>";
-                  echo "<img src=$newFilePath>";
-                  echo "<br>";
-                  echo $number.$string;
-                  echo "<br>";
-                  echo $timestamp;
-                }
-              }
-            }
+                                $record=DB::connection('mysql')->table('help_request')
+                                                               ->insert(
+                                [
+                                  'request'=>$request->text1,
+                                  'attached_files'=>$newFilePath,
+                                  'type'=>$request->select1,
+                                  'primacy'=>'1',
+                                  'requesting'=>Auth::User()->name,
+                                  'email'=>Auth::User()->email,
+                                  'time'=>now(),
+                                  'status'=>'Bekliyor',
+                                  'target'=>'c.karaduman@palmet.com',
+                                  'sent'=>'0',
+                                  'closed'=>'0'
+                                ]
+                              );
+                                  echo "Kayıt işlemi tamamlandı!";
+                              }
+                            }
+                          }
             //ILKER
 
           }
