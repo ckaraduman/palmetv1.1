@@ -141,4 +141,10 @@ class PageController extends Controller
             // Bu komutlarla da bir değişkeni karşı tarafa tek başına yollar ve kullanırız.
         }
 
+        public function request()
+        {
+            $request=DB::connection('mysql')->table('help_request')->get();
+            return view('request', compact('request'));
+        }
+
 }

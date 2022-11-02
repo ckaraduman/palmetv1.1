@@ -85,5 +85,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $level = test_input($_POST["level"]);
       }
 ?>
-{{$name}}<br>{{$email}}<br>{{$content}}<br>{{$select1}}<br>{{$level}}
+<!-- {{$name}}<br>{{$email}}<br>{{$content}}<br>{{$select1}}<br>{{$level}} -->
 </body>

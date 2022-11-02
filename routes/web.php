@@ -24,3 +24,4 @@ Route::any('hgf', 'App\Http\Controllers\PageController@index')->name('hgf');
 Route::any('help', 'App\Http\Controllers\PageController@help')->name('help');
 Route::post('helpRecord', 'App\Http\Controllers\PageController@helpRecord')->name('helpRecord');
 Route::any('target', 'App\Http\Controllers\PageController@target')->name('target');
+Route::any('request', 'App\Http\Controllers\PageController@request')->name('request');
