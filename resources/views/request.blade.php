@@ -9,23 +9,39 @@
   </head>
 
 <?php
-      foreach ($request as $key) {
-        echo $key->request."<br>";
-      }
+// echo "<table style='width:60%; margin-left:20px; margin-top:10px; line-height: 50%; table-layout: fixed;' class='table table-bordered' >";
+echo "<table style='width:60%; margin-left:20px; margin-top:30px; table-layout: fixed;' class='table table-bordered' >";
+echo  "<thead align='center'>";
+echo  "<tr>";
+echo  "<th style='width:45px;' scope='col'>";
+echo  "<th style='width:400px;'scope='col'>Talep</th>";
+echo  "<th style='width:150px;'scope='col'>Tip</th>";
+echo  "<th style='width:180px;'scope='col'>Kullanıcı</th>";
+echo  "<th style='width:90px;'scope='col'>Durum</th>";
+echo  "<th style='width:280px;'scope='col'>Atanan Kişi</th>";
+echo  "<th style='width:200px;'scope='col'>Talep Tarihi</th>";
+echo  "</tr>";
+echo  "</thead>";
+$a=1;
+foreach ($request as $key) {
+echo  "<tbody>";
+echo  "<tr style='line-height: 12px;'>";
+echo "<th scope='row'>$a</th>";
+echo "<td class='cell-breakWord'>".$key->request."</td>";
+echo "<td>".$key->type."</td>";
+echo "<td>".$key->requesting."</td>";
+echo "<td>".$key->status."</td>";
+echo "<td>".$key->target."</td>";
+echo "<td>".$key->time."</td>";
+$a++;
+}
+echo  "</tbody>";
+echo  "</table>";
 ?>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
+
+
+
+      <!-- <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
@@ -39,6 +55,4 @@
       <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+    </tr> -->

@@ -9,6 +9,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\UploadedFileSplFileInfo;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -63,7 +65,7 @@ class PageController extends Controller
           echo "<br>";
           echo $request->text1;
           echo "<br>";
-
+          date_default_timezone_set('Europe/Istanbul');
           $total = count($_FILES['image']['name']);
           echo "Dosya(lar) başarıyla alındı!";
           echo "<br>";

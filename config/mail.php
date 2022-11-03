@@ -92,8 +92,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'pcmsv2@palmet.com'),
+        'name' => env('MAIL_FROM_NAME', 'Palmet Digital'),
     ],
 
     /*
