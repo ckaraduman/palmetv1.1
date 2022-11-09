@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Http\Request;
+?>
 @extends('templates.app') <!-- şablon uygulanması için -->
 <!-- @includeif('inc.menu')  istenen dosyanın eklenmesi için -->
 @section('title', 'Palmet Digital') <!-- şablona bilgi göndermek için -->
@@ -9,4 +12,8 @@
   </head>
 <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspMerhaba,</h4>
 <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Palmet TARGET deneme sayfası!</h5>
-<h2>{{$data}}</h2>
+<hr>
+<h4>Adı : {{Auth::User()->name}}</h4>
+<h4>E-Mail : {{Auth::User()->email}}</h4>
+<h5>Talep Türü : {{$select1}}</h5>
+<h6>Açıklama : {{$text1}}</h6>

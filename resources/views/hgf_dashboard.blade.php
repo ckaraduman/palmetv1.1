@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <title>Palmet</title>
-<!-- <style type="text/css">
+<style type="text/css">
 body {
 -moz-transform: scale(0.8, 0.8); /* Moz-browsers */
 zoom: 0.8; /* Other non-webkit browsers */
@@ -24,6 +24,7 @@ zoom: 50%; /* Webkit browsers */
   font-size: 40px;
 }
 .tablo1{
+  margin-top: 20px;
   width: 100%;
   border:1px solid black;
 }
@@ -35,11 +36,11 @@ zoom: 50%; /* Webkit browsers */
   left: 100px;
   top: 150px;
 } */
-      </style> -->
+      </style>
 <body>
 <form method="post">
   @CSRF
-  <table class="tablo1">
+  <table style='margin-top: 30px;' class="tablo1">
     <tr>
       <td width="20%"></td>
       <td align="center" width="5%">First Date</td>
@@ -74,12 +75,18 @@ zoom: 50%; /* Webkit browsers */
               $delta_budget=DB::connection('sqlsrv')->table('GetData')->where('IstasyonAdi','DELTA RMS/A')
                                         ->whereBetween('OkumaTarihi', [$date1.' 08:00:00.000', $date2.' 08:00:00.000'])
                                         ->sum('GunlukButceSm3');
+              $ales_cons=DB::connection('sqlsrv')->table('GetData')->where('IstasyonAdi','ALES RMS/A')
+                                        ->whereBetween('OkumaTarihi', [$date1.' 08:00:00.000', $date2.' 08:00:00.000'])
+                                        ->sum('Tuketim2');
+              $ales_budget=DB::connection('sqlsrv')->table('GetData')->where('IstasyonAdi','ALES RMS/A')
+                                        ->whereBetween('OkumaTarihi', [$date1.' 08:00:00.000', $date2.' 08:00:00.000'])
+                                        ->sum('GunlukButceSm3');
               // $test_cem=DB::connection('mysql')->table('test')->where('id','3')
               //                            ->value('name');
-              $test_cem=DB::connection('mysql')->table('test')
-                                               ->where('id',2)
-                                               ->value('name');
-              echo $test_cem;
+              // $test_cem=DB::connection('mysql')->table('test')
+              //                                  ->where('id',2)
+              //                                  ->value('name');
+              // echo $test_cem;
 
               // $test_cem=DB::connection('mysql')->table('test')->where('id',1)
               //                           ->value('name');
@@ -134,7 +141,7 @@ zoom: 50%; /* Webkit browsers */
     <tr>
   </tr>
   <tr>
-    <td id="ales" align="left">&nbsp;&nbsp;&nbsp;&nbsp;Ales</td>
+    <td id="ales" align="left">&nbsp;&nbsp;&nbsp;&nbsp;Ales</td></td><td></td><td id="ales_cons" align="right">{{number_format($ales_cons,2)}}</td><td></td><td id="ales_budget" align="right">{{number_format($ales_budget,2)}}</td>
   </tr>
   <tr>
     <td id="gas" align="left">+ Natural Gas Distribution Companies</td>
@@ -147,18 +154,26 @@ function change1(id) {
       document.getElementById("baymina").style.visibility = "visible";
       document.getElementById("delta").style.visibility = "visible";
       document.getElementById("ales").style.visibility = "visible";
-      document.getElementById("gas").style.top = "180px";
+      document.getElementById("gas").style.top = "200px";
       document.getElementById("baymina_cons").style.visibility = "visible";
       document.getElementById("baymina_budget").style.visibility = "visible";
+      document.getElementById("delta_cons").style.visibility = "visible";
+      document.getElementById("delta_budget").style.visibility = "visible";
+      document.getElementById("ales_cons").style.visibility = "visible";
+      document.getElementById("ales_budget").style.visibility = "visible";
   } else if (id.innerHTML == "- Power Generation Plants") {
     id.innerHTML = "+ Power Generation Plants";
     document.getElementById("baymina").style.visibility = "hidden";
     document.getElementById("delta").style.visibility = "hidden";
     document.getElementById("ales").style.visibility = "hidden";
     document.getElementById("gas").style.position = "absolute";
-    document.getElementById("gas").style.top = "90px";
+    document.getElementById("gas").style.top = "110px";
     document.getElementById("baymina_cons").style.visibility = "hidden";
     document.getElementById("baymina_budget").style.visibility = "hidden";
+    document.getElementById("delta_cons").style.visibility = "hidden";
+    document.getElementById("delta_budget").style.visibility = "hidden";
+    document.getElementById("ales_cons").style.visibility = "hidden";
+    document.getElementById("ales_budget").style.visibility = "hidden";
   }
 }
 </script>

@@ -78,10 +78,11 @@ class PageController extends Controller
           $total = count($_FILES['image']['name']);
           echo "Dosya(lar) başarıyla alındı!";
           echo "<br>";
-                            $newFilePath='Dosya Eklenmedi!';
+
                           for( $i=0 ; $i < $total ; $i++ ) {
                             $uniqfilename = uniqid();
                             $tmpFilePath = $_FILES['image']['tmp_name'][$i];
+
                             //Make sure we have a file path
                             if ($tmpFilePath != ""){
                               //Setup our new file path
@@ -117,10 +118,12 @@ class PageController extends Controller
                                 // echo "<br>";
                                 // echo $test2;
                                 // echo "<br>";
+
+
+
                               }
                             }
-                          }
-
+                            $newFilePath='Dosya Eklenmedi!';
                             $record=DB::connection('mysql')->table('help_request')
                                                            ->insert(
                             [
@@ -139,9 +142,11 @@ class PageController extends Controller
                           );
                               echo "Kayıt işlemi tamamlandı!";
                               Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
+
                               dd("Email is sent successfully.");
 
 
+                          }
             //ILKER
 
           }
