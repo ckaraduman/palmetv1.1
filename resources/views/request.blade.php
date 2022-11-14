@@ -25,7 +25,7 @@ echo  "</thead>";
 $a=1;
 foreach ($request as $key) {
 echo  "<tbody>";
-echo  "<tr style='line-height: 12px;'>";
+echo  "<tr style='line-height: 20px;'>";
 echo "<th scope='row'>$a</th>";
 echo "<td class='cell-breakWord'>".$key->request."</td>";
 echo "<td>".$key->type."</td>";
