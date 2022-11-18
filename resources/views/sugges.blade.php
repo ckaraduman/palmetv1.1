@@ -1,13 +1,12 @@
 <br>
-@extends('templates.app') <!-- şablon uygulanması için -->
-<!-- @includeif('inc.menu')  istenen dosyanın eklenmesi için -->
-@section('title', 'Palmet Digital') <!-- şablona bilgi göndermek için -->
+@extends('templates.app')
+@section('title', 'Palmet Digital')
 <body>
     <div class="container">
-  <p class="fs-3">Yardım Talep Formu</p>
+  <p class="fs-3">Öneri İletim Formu</p>
   <hr>
     </div>
-<form action="{{Route('helpRecord')}}" method="post" enctype="multipart/form-data">
+<form action="{{Route('suggesRecord')}}" method="post" enctype="multipart/form-data">
   @CSRF
 
   <div class="container">
@@ -26,13 +25,14 @@
   <div class="row">
     <div class="col-3">
       <select id="dpd1" class="form-select" aria-label="Default select example" name="select1">
-        <option selected>Talep Türü</option>
-        <option value="Yazılım Destek">Yazılım Destek</option>
-        <option value="Donanım Destek">Donanım Destek</option>
-        <option value="Yazılım Lisans">Yazılım Lisans</option>
-        <option value="Yeni Yazılım">Yeni Yazılım</option>
-        <option value="Yeni Donanım">Yeni Donanım</option>
-        <option value="Bilgi Talebi">Bilgi Talebi</option>
+        <option selected>Öneri Türü</option>
+        <option value="Yeni Süreç">Yeni Süreç</option>
+        <option value="Süreç iyileştirme">Süreç İyileştirme</option>
+        <option value="Pratik Uygulama">Pratik Uygulama</option>
+        <option value="YForm Ekleme-Düzeltme">Form Ekleme/Düzeltme</option>
+        <option value="Yeni Fikir">Yeni Fikir</option>
+        <option value="Yorum-Değerlendirme">Yorum/Değerlendirme</option>
+        <option value=Diğer">Diğer</option>
       </select>
       </div>
    </div>
@@ -53,9 +53,6 @@
   </div>
     </div>
   <br>
-  <div class="container">
-    <input id="ch1" type="checkbox" name="level" value="acil">&nbsp;&nbsp;&nbspAcil
-  </div>
     </div>
   <br>
   <div class="container">

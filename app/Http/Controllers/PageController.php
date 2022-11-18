@@ -164,6 +164,34 @@ class PageController extends Controller
         {
           return view ('form1');
         }
+
+        public function web()
+        {
+          return view ('web');
+        }
+
+        public function cem()
+        {
+          return view ('accordion');
+        }
+
+        public function dataset()
+        {
+          return view ('dataset');
+        }
+
+        public function sugges()
+        {
+          $data=Auth::User();
+          return view('sugges', $data);
+        }
+
+        public function dataview()
+        {
+          $data=DB::connection('mysql')->table('rehber')->orderBy('name', 'asc')->get();
+          return view('dataview', compact('data'));
+        }
+
         public function index1(Request $data)
       {
         Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($data));
@@ -171,5 +199,86 @@ class PageController extends Controller
         dd("Email is sent successfully.");
       }
 
+      public function suggesRecord(Request $sugdata)
+      {
+        echo Auth::User()->name;
+        echo "<br>";
+        echo Auth::User()->email;
+        echo "<br>";
+        echo $sugdata->select1;
+        echo "<br>";
+        echo $sugdata->text1;
+        echo "<br>";
+        date_default_timezone_set('Europe/Istanbul');
+        $total = count($_FILES['image']['name']);
+        echo "Dosya(lar) başarıyla alındı!";
+        echo "<br>";
+                          $newFilePath='Dosya Eklenmedi!';
+                        for( $i=0 ; $i < $total ; $i++ ) {
+                          $uniqfilename = uniqid();
+                          $tmpFilePath = $_FILES['image']['tmp_name'][$i];
+                          //Make sure we have a file path
+                          if ($tmpFilePath != ""){
+                            //Setup our new file path
+                            // $newFilePath = "storage/" . $_FILES['image']['name'][$i];
+
+                                  $dosya_adi=basename($_FILES['image']['name'][$i]);
+                                  $isaret=".";
+                                  $pos = strrpos($dosya_adi, $isaret);
+                                  $len=strlen($dosya_adi);
+                                  $fark=$len-$pos;
+                                  $uzanti=substr($dosya_adi,$pos,$fark);
+                                  // echo $uzanti;
+                            $newFilePath = "storage/" . $uniqfilename.$uzanti;
+                            //Upload the file into the temp dir
+                            if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+                              // echo $total;
+                              // echo "<br>";
+                              // echo $tmpFilePath;
+                              // echo "<br>";
+                              // echo $newFilePath;
+                              // echo "<br>";
+                              // echo "<img src=$newFilePath width='500'>";
+                              $x=$i+1;
+                              echo "<a href=$newFilePath>Yüklenen $x. dosya</a>";
+                              echo "<br>";
+                              // echo $number.$string;
+                              // echo "<br>";
+                              // echo $timestamp;
+                              // echo "<br>";
+                              echo $uniqfilename;
+                              echo "<br>";
+                              // echo $test1;
+                              // echo "<br>";
+                              // echo $test2;
+                              // echo "<br>";
+                            }
+                          }
+                        }
+
+                        //   $record=DB::connection('mysql')->table('help_request')
+                        //                                  ->insert(
+                        //   [
+                        //     'request'=>$request->text1,
+                        //     'attached_files'=>$newFilePath,
+                        //     'type'=>$request->select1,
+                        //     'primacy'=>'1',
+                        //     'requesting'=>Auth::User()->name,
+                        //     'email'=>Auth::User()->email,
+                        //     'time'=>now(),
+                        //     'status'=>'Bekliyor',
+                        //     'target'=>'c.karaduman@palmet.com',
+                        //     'sent'=>'0',
+                        //     'closed'=>'0'
+                        //   ]
+                        // );
+                            echo "İşlem tamamlandı!";
+                        //     Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
+                        //     dd("Email is sent successfully.");
+
+
+          //ILKER
+
+        }
 
 }
