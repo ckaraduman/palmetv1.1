@@ -32,18 +32,6 @@
 <th style='width:180px;'scope='col'>Pozisyon</th>
 </tr>
 </thead>
-<?php $a=1; foreach ($data as $key) {?>
-<tbody>
-<tr style='line-height: 20px;'>
-<th scope='row'><?php echo $a ?></th>
-<td><?php echo $key->name ?></td>
-<td><?php echo $key->email ?></td>
-<td><?php echo $key->phone ?></td>
-<td><?php echo $key->gsm ?></td>
-<td><?php echo $key->department ?></td>
-<td><?php echo $key->position ?></td>
-<?php $a++; } ?>
-</tbody>
 
 </table>
 </div>
