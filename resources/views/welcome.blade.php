@@ -93,7 +93,7 @@
                       <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="#">IT-Donanım Varlıkları</a></li>
                         <li><a class="dropdown-item" href="#">IT-Yazılım Varlıkları</a></li>
-                        <li><a class="dropdown-item" href="#">Diğer Kaynaklar</a></li>
+                        <li><a class="dropdown-item" href="{{route('datalines')}}">Data Hatları</a></li>
                       </ul>
                     </li>
 

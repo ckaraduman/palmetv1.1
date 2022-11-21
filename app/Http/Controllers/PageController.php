@@ -180,6 +180,11 @@ class PageController extends Controller
           return view ('dataset');
         }
 
+        public function datalines()
+        {
+          return view ('datalines');
+        }
+
         public function sugges()
         {
           $data=Auth::User();

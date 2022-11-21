@@ -26,6 +26,7 @@ Route::any('sugges', 'App\Http\Controllers\PageController@sugges')->name('sugges
 Route::any('suggesRecord', 'App\Http\Controllers\PageController@suggesRecord')->name('suggesRecord');
 Route::any('cem', 'App\Http\Controllers\PageController@cem')->name('cem');
 Route::any('dataset', 'App\Http\Controllers\PageController@dataset')->name('dataset');
+Route::any('datalines', 'App\Http\Controllers\PageController@datalines')->name('datalines');
 Route::any('dataview', 'App\Http\Controllers\PageController@dataview')->name('dataview');
 Route::post('helpRecord', 'App\Http\Controllers\PageController@helpRecord')->name('helpRecord');
 Route::any('web', 'App\Http\Controllers\PageController@web')->name('web');
