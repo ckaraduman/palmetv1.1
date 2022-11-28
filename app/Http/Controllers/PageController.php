@@ -182,7 +182,8 @@ class PageController extends Controller
 
         public function datalines()
         {
-          return view ('datalines');
+          $datalines=DB::connection('mysql')->table('datalines')->get();
+          return view('datalines', compact('datalines'));
         }
 
         public function sugges()
