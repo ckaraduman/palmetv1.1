@@ -72,6 +72,8 @@ class PageController extends Controller
           echo "<br>";
           echo $request->select1;
           echo "<br>";
+          echo $request->select2;
+          echo "<br>";
           echo $request->text1;
           echo "<br>";
           date_default_timezone_set('Europe/Istanbul');
@@ -127,6 +129,7 @@ class PageController extends Controller
                               'request'=>$request->text1,
                               'attached_files'=>$newFilePath,
                               'type'=>$request->select1,
+                              'type2'=>$request->select2,
                               'primacy'=>'1',
                               'requesting'=>Auth::User()->name,
                               'email'=>Auth::User()->email,
@@ -138,7 +141,7 @@ class PageController extends Controller
                             ]
                           );
                               echo "Kayıt işlemi tamamlandı!";
-                              Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
+                              Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request, $newFilePath));
                               dd("Email is sent successfully.");
 
 

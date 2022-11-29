@@ -16,4 +16,6 @@ use Illuminate\Http\Request;
 <h4>Adı : {{Auth::User()->name}}</h4>
 <h4>E-Mail : {{Auth::User()->email}}</h4>
 <h5>Talep Türü : {{$select1}}</h5>
+<h5>Alt Talep Türü : {{$select2}}</h5>
 <h6>Açıklama : {{$text1}}</h6>
+<h4>Dosya(lar) : {{$newFilePath}}</h5>
