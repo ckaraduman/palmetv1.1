@@ -105,6 +105,7 @@
                         <li><a class="dropdown-item" href="#">Projeler</a></li>
                         <li><a class="dropdown-item" href="#">Belgeler</a></li>
                         <li><a class="dropdown-item" href="#">Referanslar</a></li>
+                        <li><a class="dropdown-item" href="#">Guide</a></li>
                       </ul>
                     </li>
 
