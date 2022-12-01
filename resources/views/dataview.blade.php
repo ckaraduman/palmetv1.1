@@ -24,12 +24,13 @@
 <thead align='center'>
 <tr>
 <th style='width:35px;' scope='col'>
-<th style='width:200px;'scope='col'>Ad-Soyad</th>
+<th align="left" style='width:200px;' scope='col'>Ad-Soyad</th>
 <th style='width:120px;'scope='col'>E-Mail</th>
 <th style='width:80px;'scope='col'>Dahili No</th>
 <th style='width:130px;'scope='col'>GSM No</th>
 <th style='width:100px;'scope='col'>Departman</th>
 <th style='width:180px;'scope='col'>Pozisyon</th>
+<th style='width:180px;'scope='col'>Şirket</th>
 </tr>
 </thead>
 <?php $a=1; foreach ($data as $key) {?>
@@ -42,6 +43,7 @@
 <td><?php echo $key->gsm ?></td>
 <td><?php echo $key->department ?></td>
 <td><?php echo $key->position ?></td>
+<td><?php echo $key->company ?></td>
 <?php $a++; } ?>
 </tbody>
 
