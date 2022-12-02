@@ -300,6 +300,8 @@ class PageController extends Controller
         echo "<br>";
         echo $dirdata->email;
         echo "<br>";
+        echo $dirdata->id;
+        echo "<br>";
                         //   $record=DB::connection('mysql')->table('help_request')
                         //                                  ->insert(
                         //   [

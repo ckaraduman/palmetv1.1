@@ -21,6 +21,7 @@
     </form>
 
     <?php
+    $prs_id="";
     $prs_name="";
     $prs_email="";
     $prs_phone="";
@@ -32,6 +33,8 @@
     if(isset($_POST["input1"])){
     $data1=$_POST["input1"];
 
+    $prs_id=DB::connection('mysql')->table('directory')->where('name',$data1)
+                                     ->value('id');
     $prs_name=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('name');
     $prs_email=DB::connection('mysql')->table('directory')->where('name',$data1)
@@ -52,6 +55,10 @@
     } ?>
       <form  action="{{Route('directoryUpdate')}}" method="post" style="width:50%">
       @CSRF
+    <div class="mb-3 mt-3">
+      <label for="id" class="form-label" style="height:15px;">Rehber No</label>
+    <?php echo "<input type='text' class='form-control' id='id' name='id' readonly value='".$prs_id."'\>"?>
+    </div>
     <div class="mb-3 mt-3">
       <label for="adsoyad" class="form-label" style="height:15px;">Adı Soyadı</label>
     <?php echo "<input type='text' class='form-control' id='adsoyad' name='adsoyad' value='".$prs_name."'\>"?>
