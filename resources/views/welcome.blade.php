@@ -58,7 +58,7 @@
                         Rehber Hizmetler
                       </a>
                       <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="{{route('dataview')}}">İletişim Bilgileri</a></li>
+                        <li><a class="dropdown-item" href="{{route('directory')}}">İletişim Bilgileri</a></li>
                         <li><a class="dropdown-item" href="{{Route('dataset')}}">İletişim Bilgi Güncelleme</a></li>
                         <li><a class="dropdown-item" href="{{Route('web')}}">Web Sitelerimiz</a></li>
                       </ul>

@@ -27,8 +27,9 @@ Route::any('suggesRecord', 'App\Http\Controllers\PageController@suggesRecord')->
 Route::any('cem', 'App\Http\Controllers\PageController@cem')->name('cem');
 Route::any('dataset', 'App\Http\Controllers\PageController@dataset')->name('dataset');
 Route::any('datalines', 'App\Http\Controllers\PageController@datalines')->name('datalines');
-Route::any('dataview', 'App\Http\Controllers\PageController@dataview')->name('dataview');
+Route::any('directory', 'App\Http\Controllers\PageController@directory')->name('directory');
 Route::post('helpRecord', 'App\Http\Controllers\PageController@helpRecord')->name('helpRecord');
+Route::post('directoryUpdate', 'App\Http\Controllers\PageController@directoryUpdate')->name('directoryUpdate');
 Route::any('web', 'App\Http\Controllers\PageController@web')->name('web');
 Route::any('request', 'App\Http\Controllers\PageController@request')->name('request');
 Route::any('/form1', 'App\Http\Controllers\PageController@form1')->name('form1');

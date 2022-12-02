@@ -195,10 +195,10 @@ class PageController extends Controller
           return view('sugges', $data);
         }
 
-        public function dataview()
+        public function directory()
         {
-          $data=DB::connection('mysql')->table('rehber')->orderBy('name', 'asc')->get();
-          return view('dataview', compact('data'));
+          $data=DB::connection('mysql')->table('directory')->orderBy('name', 'asc')->get();
+          return view('directory', compact('data'));
         }
 
         public function index1(Request $data)

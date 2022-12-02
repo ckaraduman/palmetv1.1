@@ -10,7 +10,7 @@
     <div class="container">
       <h4>DataSet Page</h4>
 
-      <form method="post">
+      <form action="{{Route('directoryUpdate')}}" method="post">
       @CSRF
       <div class = "pt-0">
         <div class="row">
@@ -25,6 +25,7 @@
     $prs_email="";
     $prs_phone="";
     $prs_gsm="";
+    $prs_company="";
     $prs_department="";
     $prs_position="";
     $prs_location="";
@@ -39,6 +40,8 @@
                                     ->value('phone');
     $prs_gsm=DB::connection('mysql')->table('rehber')->where('name',$data1)
                                     ->value('gsm');
+    $prs_company=DB::connection('mysql')->table('rehber')->where('name',$data1)
+                                    ->value('company');
     $prs_department=DB::connection('mysql')->table('rehber')->where('name',$data1)
                                     ->value('department');
     $prs_position=DB::connection('mysql')->table('rehber')->where('name',$data1)
@@ -65,6 +68,10 @@
     <?php echo "<input type='text' class='form-control' id='gsm' name='gsm' value='".$prs_gsm."'\>" ?>
     </div>
     <div class="mb-3">
+      <label for="company" class="form-label" style="height:15px;">Bağlı Olduğu Şirket</label>
+    <?php echo "<input type='text' class='form-control' id='gsm' name='gsm' value='".$prs_company."'\>" ?>
+    </div>
+    <div class="mb-3">
       <label for="department" class="form-label" style="height:15px;">Departman Bilgisi</label>
     <?php echo "<input type='text' class='form-control' id='department' name='department' value='".$prs_department."'\>" ?>
     </div>
@@ -81,8 +88,7 @@
         <input class="form-check-input" type="checkbox" name="remember"> Remember me
       </label>
     </div> -->
-    <button type="submit" class="btn btn-primary" style="width:120px">Kaydet</button>
-    <button type="submit" class="btn btn-primary" style="width:120px">Yeni Ekle</button>
+    <button type="submit" class="btn btn-primary" style="width:120px">Güncelle</button>
   </form>
     </div>
   </body>
