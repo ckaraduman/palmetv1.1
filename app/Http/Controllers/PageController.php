@@ -14,6 +14,7 @@ use App\Models\Order;
 use Illuminate\Http\UploadedFileSplFileInfo;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 
 class PageController extends Controller
 {
@@ -197,7 +198,7 @@ class PageController extends Controller
 
         public function directory()
         {
-          $data=DB::connection('mysql')->table('directory')->orderBy('name', 'asc')->get();
+          $data=DB::connection('mysql')->table('directory')->orderBy('fullname', 'asc')->get();
           return view('directory', compact('data'));
         }
 
@@ -296,31 +297,32 @@ class PageController extends Controller
         echo "<br>";
         echo Auth::User()->email;
         echo "<br>";
-        echo $dirdata->adsoyad;
+        echo $dirdata->fullname;
         echo "<br>";
         echo $dirdata->email;
         echo "<br>";
         echo $dirdata->id;
         echo "<br>";
-                        //   $record=DB::connection('mysql')->table('help_request')
-                        //                                  ->insert(
-                        //   [
-                        //     'request'=>$request->text1,
-                        //     'attached_files'=>$newFilePath,
-                        //     'type'=>$request->select1,
-                        //     'primacy'=>'1',
-                        //     'requesting'=>Auth::User()->name,
-                        //     'email'=>Auth::User()->email,
-                        //     'time'=>now(),
-                        //     'status'=>'Bekliyor',
-                        //     'target'=>'c.karaduman@palmet.com',
-                        //     'sent'=>'0',
-                        //     'closed'=>'0'
-                        //   ]
-                        // );
-                            echo "İşlem tamamlandı!";
-                        //     Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
-                        //     dd("Email is sent successfully.");
+                        $record=DB::connection('mysql')->table('directory')
+                                                       ->where('id', $dirdata->id)
+                                                       ->update(
+                          [
+                            'fullname'=>$dirdata->fullname,
+                            'email'=>$dirdata->email,
+                            'intercom'=>$dirdata->intercom,
+                            'gsm'=>$dirdata->gsm,
+                            'company'=>$dirdata->company,
+                            'department'=>$dirdata->department,
+                            'position'=>$dirdata->position,
+                            'location'=>$dirdata->location
+                           ]
+                         );
+                             echo "İşlem tamamlandı!";
+                             echo "<br>";
+                             echo "<a href='http://palmet:1180'>Palmet Digital AnaSayfa</a>";
+                                                          
+                            //  Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
+                            //  dd("Email is sent successfully.");
 
 
           //Directory Update - END
@@ -328,3 +330,4 @@ class PageController extends Controller
         }
 
 }
+?>

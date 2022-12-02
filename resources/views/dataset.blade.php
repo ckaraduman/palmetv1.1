@@ -22,9 +22,9 @@
 
     <?php
     $prs_id="";
-    $prs_name="";
+    $prs_fullname="";
     $prs_email="";
-    $prs_phone="";
+    $prs_intercom="";
     $prs_gsm="";
     $prs_company="";
     $prs_department="";
@@ -33,23 +33,23 @@
     if(isset($_POST["input1"])){
     $data1=$_POST["input1"];
 
-    $prs_id=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_id=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                      ->value('id');
-    $prs_name=DB::connection('mysql')->table('directory')->where('name',$data1)
-                                    ->value('name');
-    $prs_email=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_fullname=DB::connection('mysql')->table('directory')->where('fullname',$data1)
+                                    ->value('fullname');
+    $prs_email=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                     ->value('email');
-    $prs_phone=DB::connection('mysql')->table('directory')->where('name',$data1)
-                                    ->value('phone');
-    $prs_gsm=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_intercom=DB::connection('mysql')->table('directory')->where('fullname',$data1)
+                                    ->value('intercom');
+    $prs_gsm=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                     ->value('gsm');
-    $prs_company=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_company=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                     ->value('company');
-    $prs_department=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_department=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                     ->value('department');
-    $prs_position=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_position=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                     ->value('position');
-    $prs_location=DB::connection('mysql')->table('directory')->where('name',$data1)
+    $prs_location=DB::connection('mysql')->table('directory')->where('fullname',$data1)
                                     ->value('location');
 
     } ?>
@@ -61,7 +61,7 @@
     </div>
     <div class="mb-3 mt-3">
       <label for="adsoyad" class="form-label" style="height:15px;">Adı Soyadı</label>
-    <?php echo "<input type='text' class='form-control' id='adsoyad' name='adsoyad' value='".$prs_name."'\>"?>
+    <?php echo "<input type='text' class='form-control' id='name' name='fullname' value='".$prs_fullname."'\>"?>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label" style="height:15px;">E-Mail Adresi</label>
@@ -69,7 +69,7 @@
     </div>
     <div class="mb-3">
       <label for="dahili" class="form-label" style="height:15px;">Dahili Telefon Numarası</label>
-    <?php echo "<input type='text' class='form-control' id='dahili' name='dahili' value='".$prs_phone."'\>" ?>
+    <?php echo "<input type='text' class='form-control' id='intercom' name='intercom' value='".$prs_intercom."'\>" ?>
     </div>
     <div class="mb-3">
       <label for="gsm" class="form-label" style="height:15px;">Cep Telefon Numarası</label>
@@ -77,7 +77,7 @@
     </div>
     <div class="mb-3">
       <label for="company" class="form-label" style="height:15px;">Bağlı Olduğu Şirket</label>
-    <?php echo "<input type='text' class='form-control' id='gsm' name='gsm' value='".$prs_company."'\>" ?>
+    <?php echo "<input type='text' class='form-control' id='company' name='company' value='".$prs_company."'\>" ?>
     </div>
     <div class="mb-3">
       <label for="department" class="form-label" style="height:15px;">Departman Bilgisi</label>
