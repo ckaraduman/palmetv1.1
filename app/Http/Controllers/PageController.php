@@ -290,4 +290,39 @@ class PageController extends Controller
 
         }
 
+        public function directoryUpdate(Request $dirdata) //Directory Update - START
+      {
+        echo Auth::User()->name;
+        echo "<br>";
+        echo Auth::User()->email;
+        echo "<br>";
+        echo $dirdata->adsoyad;
+        echo "<br>";
+        echo $dirdata->email;
+        echo "<br>";
+                        //   $record=DB::connection('mysql')->table('help_request')
+                        //                                  ->insert(
+                        //   [
+                        //     'request'=>$request->text1,
+                        //     'attached_files'=>$newFilePath,
+                        //     'type'=>$request->select1,
+                        //     'primacy'=>'1',
+                        //     'requesting'=>Auth::User()->name,
+                        //     'email'=>Auth::User()->email,
+                        //     'time'=>now(),
+                        //     'status'=>'Bekliyor',
+                        //     'target'=>'c.karaduman@palmet.com',
+                        //     'sent'=>'0',
+                        //     'closed'=>'0'
+                        //   ]
+                        // );
+                            echo "İşlem tamamlandı!";
+                        //     Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
+                        //     dd("Email is sent successfully.");
+
+
+          //Directory Update - END
+
+        }
+
 }

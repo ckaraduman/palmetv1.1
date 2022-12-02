@@ -10,7 +10,7 @@
     <div class="container">
       <h4>DataSet Page</h4>
 
-      <form action="{{Route('directoryUpdate')}}" method="post">
+      <form method="post">
       @CSRF
       <div class = "pt-0">
         <div class="row">
@@ -32,25 +32,26 @@
     if(isset($_POST["input1"])){
     $data1=$_POST["input1"];
 
-    $prs_name=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_name=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('name');
-    $prs_email=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_email=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('email');
-    $prs_phone=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_phone=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('phone');
-    $prs_gsm=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_gsm=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('gsm');
-    $prs_company=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_company=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('company');
-    $prs_department=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_department=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('department');
-    $prs_position=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_position=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('position');
-    $prs_location=DB::connection('mysql')->table('rehber')->where('name',$data1)
+    $prs_location=DB::connection('mysql')->table('directory')->where('name',$data1)
                                     ->value('location');
 
     } ?>
-      <form action="/action_page.php" style="width:50%">
+      <form  action="{{Route('directoryUpdate')}}" method="post" style="width:50%">
+      @CSRF
     <div class="mb-3 mt-3">
       <label for="adsoyad" class="form-label" style="height:15px;">Adı Soyadı</label>
     <?php echo "<input type='text' class='form-control' id='adsoyad' name='adsoyad' value='".$prs_name."'\>"?>
