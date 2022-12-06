@@ -5,6 +5,15 @@
   <head>
     <meta charset="utf-8">
     <title>Palmet Digital</title>
+
+<style type="text/css">
+body {
+-moz-transform: scale(0.8, 0.8); /* Moz-browsers */
+zoom: 0.8; /* Other non-webkit browsers */
+zoom: 80%; /* Webkit browsers */
+}
+</style>
+
   </head>
   <body>
     <div class="container">
