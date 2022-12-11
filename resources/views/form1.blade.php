@@ -86,6 +86,17 @@ function myFunction() {
     }
 }
 </script>
+<?php
+date_default_timezone_set('Europe/Istanbul');
+$time=now();
+$time1=new DateTime();
+echo $time;
+// echo $time1;
 
+$date   = new DateTime();
+$result = $date->format('Y-m-d H:i:s');
+echo "<br>";
+echo $result . "<br>";
+?>
 </body>
 </html>
