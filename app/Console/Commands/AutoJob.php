@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class AutoJob extends Command
 {
@@ -28,6 +29,11 @@ class AutoJob extends Command
      */
     public function handle()
     {
+        $record=DB::connection('mysql')->table('test')->insert(
+                            [
+                              'name'=>'Deneme'
+                            ]
+                        );
         Storage::append('file.txt', 'Cem İlker Karaduman - görev tamamlandı!');
         // return Command::SUCCESS;
     }
