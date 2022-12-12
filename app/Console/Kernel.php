@@ -10,6 +10,7 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         Commands\TestJob::class,
+        Commands\AutoJob::class,
     ];
     /**
      * Define the application's command schedule.
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('yazici')->everyMinute();
+        $schedule->command('RunTime')->everyMinute();
     }
 
     /**
