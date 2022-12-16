@@ -33,5 +33,5 @@ Route::post('directoryUpdate', 'App\Http\Controllers\PageController@directoryUpd
 Route::any('web', 'App\Http\Controllers\PageController@web')->name('web');
 Route::any('request', 'App\Http\Controllers\PageController@request')->name('request');
 Route::any('/form1', 'App\Http\Controllers\PageController@form1')->name('form1');
-Route::post('/sendMail', 'App\Http\Controllers\PageController@sendMail')->name('sendMail');
-Route::any('send-mail', 'App\Http\Controllers\PageController@index1')->name('send-mail');
+// Route::post('/sendMail', 'App\Http\Controllers\PageController@sendMail')->name('sendMail');
+// Route::any('send-mail', 'App\Http\Controllers\PageController@index1')->name('send-mail');

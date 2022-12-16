@@ -79,9 +79,17 @@ class PageController extends Controller
           echo "<br>";
           date_default_timezone_set('Europe/Istanbul');
           $total = count($_FILES['image']['name']);
-          echo "Dosya(lar) başarıyla alındı!";
-          echo "<br>";
+          if ($total>5){
+                echo "5 dosyadan fazla ek yapamazsınız!";
+                }else{
+                        echo "Dosya(lar) başarıyla alındı!";
+                        echo "<br>";
                             $newFilePath='Dosya Eklenmedi!';
+                            $FilePath1='';
+                            $FilePath2='';
+                            $FilePath3='';
+                            $FilePath4='';
+                            $FilePath5='';
                           for( $i=0 ; $i < $total ; $i++ ) {
                             $uniqfilename = uniqid();
                             $tmpFilePath = $_FILES['image']['tmp_name'][$i];
@@ -103,13 +111,19 @@ class PageController extends Controller
                                 // echo $total;
                                 // echo "<br>";
                                 // echo $tmpFilePath;
-                                // echo "<br>";
-                                // echo $newFilePath;
+                                echo "<br>";
+                                echo $newFilePath;
                                 // echo "<br>";
                                 // echo "<img src=$newFilePath width='500'>";
                                 $x=$i+1;
                                 echo "<a href=$newFilePath>Yüklenen $x. dosya</a>";
                                 echo "<br>";
+                                if ($x==1){($FilePath1=$newFilePath);}
+                                if ($x==2){($FilePath2=$newFilePath);}
+                                if ($x==3){($FilePath3=$newFilePath);}
+                                if ($x==4){($FilePath4=$newFilePath);}
+                                if ($x==5){($FilePath5=$newFilePath);}
+                                // $FilePath1=$newFilePath;
                                 // echo $number.$string;
                                 // echo "<br>";
                                 // echo $timestamp;
@@ -123,12 +137,27 @@ class PageController extends Controller
                               }
                             }
                           }
+                            echo "<br>";
+                            echo $FilePath1;
+                            echo "<br>";
+                            echo $FilePath2;
+                            echo "<br>";
+                            echo $FilePath3;
+                            echo "<br>";
+                            echo $FilePath4;
+                            echo "<br>";
+                            echo $FilePath5;
+                            echo "<br>";
 
                             $record=DB::connection('mysql')->table('help_request')
                                                            ->insert(
                             [
                               'request'=>$request->text1,
-                              'attached_files'=>$newFilePath,
+                              'attached_files1'=>$FilePath1,
+                              'attached_files2'=>$FilePath2,
+                              'attached_files3'=>$FilePath3,
+                              'attached_files4'=>$FilePath4,
+                              'attached_files5'=>$FilePath5,
                               'type'=>$request->select1,
                               'type2'=>$request->select2,
                               'primacy'=>'1',
@@ -142,12 +171,12 @@ class PageController extends Controller
                             ]
                           );
                               echo "Kayıt işlemi tamamlandı!";
-                              Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request, $newFilePath));
-                              dd("Email is sent successfully.");
+                              Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request, $FilePath1, $FilePath2, $FilePath3, $FilePath4, $FilePath5));
+                              // dd("Email is sent successfully.");
 
 
             //ILKER
-
+                        }              
           }
 
         // public function target()
@@ -202,12 +231,12 @@ class PageController extends Controller
           return view('directory', compact('data'));
         }
 
-        public function index1(Request $data)
-      {
-        Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($data));
+      //   public function index1(Request $data)
+      // {
+      //   Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($data));
 
-        dd("Email is sent successfully.");
-      }
+      //   dd("Email is sent successfully.");
+      // }
 
       public function suggesRecord(Request $sugdata)
       {

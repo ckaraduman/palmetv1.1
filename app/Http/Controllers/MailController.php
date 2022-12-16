@@ -16,14 +16,14 @@ class MailController extends Controller
   */
     public function index()
   {
-    $data = [
-        'title' => 'Palmet Digital bilgilendirme',
-        'body' => 'This is for testing email using smtp and by CIKaraduman 2022 first mail.'
-    ];
+    // $data = [
+    //     'title' => 'Palmet Digital bilgilendirme',
+    //     'body' => 'This is for testing email using smtp and by CIKaraduman 2022 first mail.'
+    // ];
 
-    Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($data));
+    // Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($data));
 
-    dd("Email is sent successfully.");
+    // dd("Email is sent successfully.");
   }
 }
 ?>

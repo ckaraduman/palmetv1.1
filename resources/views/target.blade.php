@@ -18,4 +18,18 @@ use Illuminate\Http\Request;
 <h5>Talep Türü : {{$select1}}</h5>
 <h5>Alt Talep Türü : {{$select2}}</h5>
 <h6>Açıklama : {{$text1}}</h6>
-<h4>Dosya(lar) : {{$newFilePath}}</h5>
+
+<h5>1. Ek Dosya Yolu : <a href=<?php echo 'https://digital.palmet.com/'.$FilePath1; ?>>{{$FilePath1}}</a></h5>
+<h5>1. Ek Dosya Yolu : <a href=<?php echo 'http://palmet:1180/'.$FilePath1; ?>>{{$FilePath1}}</a></h5>
+
+<h5>2. Ek Dosya Yolu : <a href=<?php echo 'https://digital.palmet.com/'.$FilePath2; ?>>{{$FilePath2}}</a></h5>
+<h5>2. Ek Dosya Yolu : <a href=<?php echo 'http://palmet:1180/'.$FilePath2; ?>>{{$FilePath2}}</a></h5>
+
+<h5>3. Ek Dosya Yolu : <a href=<?php echo 'https://digital.palmet.com/'.$FilePath3; ?>>{{$FilePath3}}</a></h5>
+<h5>3. Ek Dosya Yolu : <a href=<?php echo 'http://palmet:1180/'.$FilePath3; ?>>{{$FilePath3}}</a></h5>
+
+<h5>4. Ek Dosya Yolu : <a href=<?php echo 'https://digital.palmet.com/'.$FilePath4; ?>>{{$FilePath4}}</a></h5>
+<h5>4. Ek Dosya Yolu : <a href=<?php echo 'http://palmet:1180/'.$FilePath4; ?>>{{$FilePath4}}</a></h5>
+
+<h5>5. Ek Dosya Yolu : <a href=<?php echo 'https://digital.palmet.com/'.$FilePath5; ?>>{{$FilePath5}}</a></h5>
+<h5>5. Ek Dosya Yolu : <a href=<?php echo 'http://palmet:1180/'.$FilePath5; ?>>{{$FilePath5}}</a></h5>

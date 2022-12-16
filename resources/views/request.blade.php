@@ -1,7 +1,6 @@
 @extends('templates.app') <!-- şablon uygulanması için -->
 @section('title', 'Palmet Digital') <!-- şablona bilgi göndermek için -->
 <body>
-
 <table style='width:60%; margin-left:20px; margin-top:30px; table-layout: fixed;' class='table table-bordered' >
 <thead align='center'>
 <tr>
@@ -12,9 +11,10 @@
 <th style='width:90px;'scope='col'>Durum</th>
 <th style='width:280px;'scope='col'>Atanan Kişi</th>
 <th style='width:200px;'scope='col'>Talep Tarihi</th>
+<th style='width:300px;'scope='col'>Eklenen Dosya</th>
 </tr>
 </thead>
-@<?php $a=1; foreach ($request as $key) {?>
+<?php $a=1; foreach ($request as $key) {?>
 
 <tbody>";
 <tr style='line-height: 20px;'>
@@ -25,6 +25,7 @@
 <td><?php echo $key->status ?></td>
 <td><?php echo $key->target ?></td>
 <td><?php echo $key->time ?></td>
+<td><a href=<?php echo 'http://palmet:1180/'.$key->attached_files1; ?>><?php if (empty($key->attached_files1)) echo ''; else echo 'dosya1&nbsp'; ?></a><a href=<?php echo 'http://palmet:1180/'.$key->attached_files2; ?>><?php if (empty($key->attached_files2)) echo ''; else echo 'dosya2&nbsp'; ?></a><a href=<?php echo 'http://palmet:1180/'.$key->attached_files3; ?>><?php if (empty($key->attached_files3)) echo ''; else echo 'dosya3&nbsp'; ?></a><a href=<?php echo 'http://palmet:1180/'.$key->attached_files4; ?>><?php if (empty($key->attached_files4)) echo ''; else echo 'dosya4&nbsp'; ?></a><a href=<?php echo 'http://palmet:1180/'.$key->attached_files5; ?>><?php if (empty($key->attached_files5)) echo ''; else echo 'dosya5&nbsp'; ?></a></td>
 <?php $a++; } ?>
 </tbody>
 
