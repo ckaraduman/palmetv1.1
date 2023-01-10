@@ -20,13 +20,14 @@ class SendMail extends Mailable
     public $FilePath3;
     public $FilePath4;
     public $FilePath5;
+    public $gsm_data;
   
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($request, $FilePath1, $FilePath2, $FilePath3, $FilePath4, $FilePath5,)
+    public function __construct($request, $FilePath1, $FilePath2, $FilePath3, $FilePath4, $FilePath5, $gsm_data)
     {
       $this->request = $request;
       $this->FilePath1 = $FilePath1;
@@ -34,6 +35,7 @@ class SendMail extends Mailable
       $this->FilePath3 = $FilePath3;
       $this->FilePath4 = $FilePath4;
       $this->FilePath5 = $FilePath5;
+      $this->gsm_data = $gsm_data;
     }
 
     public function build()
@@ -46,12 +48,21 @@ class SendMail extends Mailable
       // return $this->subject('Palmet Digital Bilgilendirme') // Çalışıyor
       //             ->cc('c.karaduman@palmet.com')            // Çalışıyor
       //               ->view('target', $data->all());         // Çalışıyor
+      
+      if ( isset($this->request->select1)){
 
-      return $this->subject('Palmet Digital Bilgilendirme') 
-                  ->cc('c.karaduman@palmet.com')            
-                  ->view('target')->with(['select1' => $this->request->select1, 'select2' => $this->request->select2, 'text1' => $this->request->text1, 'FilePath1' => $this->FilePath1,
-                                                     'FilePath2' => $this->FilePath2, 'FilePath3' => $this->FilePath3, 'FilePath4' => $this->FilePath4, 'FilePath5' => $this->FilePath5]);      
+        return $this->subject('Palmet Digital Talep Bildirimi')
+        ->cc('c.karaduman@palmet.com')            
+        ->view('target')->with(['select1' => $this->request->select1, 'select2' => $this->request->select2, 'text1' => $this->request->text1, 'FilePath1' => $this->FilePath1,
+                                           'FilePath2' => $this->FilePath2, 'FilePath3' => $this->FilePath3, 'FilePath4' => $this->FilePath4, 'FilePath5' => $this->FilePath5]);
 
+      }else{
+
+        return $this->subject('Palmet Digital GSM Talep') 
+        ->cc('makroport@gmail.com')            
+        ->view('target_gsm')->with(['gsm_select1' => $this->gsm_data->gsm_select1, 'gsm_text1' => $this->gsm_data->gsm_text1]);
+
+                      }
     }
 
     // /**

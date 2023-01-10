@@ -13,8 +13,10 @@ use App\Mail\OrderShipped;
 use App\Models\Order;
 use Illuminate\Http\UploadedFileSplFileInfo;
 use App\Mail\SendMail;
+use App\Mail\SendMail_Gsm;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
@@ -65,8 +67,21 @@ class PageController extends Controller
           return view('help', $data);
         }
 
+        public function insData()
+        {
+          $insdata=Auth::User();
+          return view('insData', $insdata);
+        }
+
+        public function gsm()
+        {
+          $data=Auth::User();
+          return view('gsm', $data);
+        }
+
         public function helpRecord(Request $request)
         {
+          $gsm_data='';
           echo Auth::User()->name;
           echo "<br>";
           echo Auth::User()->email;
@@ -171,13 +186,14 @@ class PageController extends Controller
                             ]
                           );
                               echo "Kayıt işlemi tamamlandı!";
-                              Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request, $FilePath1, $FilePath2, $FilePath3, $FilePath4, $FilePath5));
+                              Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request, $FilePath1, $FilePath2, $FilePath3, $FilePath4, $FilePath5, $gsm_data));
                               // dd("Email is sent successfully.");
-
-
+                             
+                              
             //ILKER
-                        }              
-          }
+                        }
+                        return redirect()->route('main_page');                 
+        }
 
         // public function target()
         // {
@@ -187,6 +203,52 @@ class PageController extends Controller
         //     return view('target', compact('data'));
         //     // Bu komutlarla da bir değişkeni karşı tarafa tek başına yollar ve kullanırız.
         // }
+
+        public function gsmRecord(Request $gsm_data)
+        {
+          $request='';
+          $FilePath1='';
+          $FilePath2='';
+          $FilePath3='';
+          $FilePath4='';
+          $FilePath5='';
+
+          echo Auth::User()->name;
+          echo "<br>";
+          echo Auth::User()->email;
+          echo "<br>";
+          echo $gsm_data->gsm_select1;
+          echo "<br>";
+          echo $gsm_data->gsm_text1;
+          echo "<br>";
+          date_default_timezone_set('Europe/Istanbul');
+                            
+                          
+                            $record=DB::connection('mysql')->table('gsm_request')
+                                                           ->insert(
+                            [
+                              'request'=>$gsm_data->gsm_text1,
+                              'type'=>$gsm_data->gsm_select1,
+                              'primacy'=>'1',
+                              'requesting'=>Auth::User()->name,
+                              'email'=>Auth::User()->email,
+                              'time'=>now(),
+                              'status'=>'Bekliyor',
+                              'target'=>'c.karaduman@palmet.com',
+                              'sent'=>'0',
+                              'closed'=>'0'
+                            ]
+                          );
+                              echo "Kayıt işlemi tamamlandı!";
+                              Mail::to('c.karaduman@palmet.com')->send(new SendMail($request, $FilePath1, $FilePath2, $FilePath3, $FilePath4, $FilePath5, $gsm_data));
+                              // dd("Email is sent successfully.");
+                              return redirect()->route('main_page');                 
+        }
+
+
+
+
+
 
         public function request()
         {
@@ -217,6 +279,12 @@ class PageController extends Controller
         {
           $datalines=DB::connection('mysql')->table('datalines')->get();
           return view('datalines', compact('datalines'));
+        }
+
+        public function transceiver()
+        {
+          $transceiver=DB::connection('mysql')->table('transceiver')->get();
+          return view('transceiver', compact('transceiver'));
         }
 
         public function sugges()
@@ -348,7 +416,7 @@ class PageController extends Controller
                          );
                              echo "İşlem tamamlandı!";
                              echo "<br>";
-                             echo "<a href='http://palmet:1180'>Palmet Digital AnaSayfa</a>";
+                             echo "<a href='https://digital.palmet.com'>Palmet Digital AnaSayfa</a>";
                                                           
                             //  Mail::to('cemilkerkaraduman@gmail.com')->send(new SendMail($request));
                             //  dd("Email is sent successfully.");
@@ -357,6 +425,39 @@ class PageController extends Controller
           //Directory Update - END
 
         }
+
+        public function insDataRec(Request $insdata) //Directory Insert Data - START
+        {
+          echo Auth::User()->name;
+          echo "<br>";
+          echo Auth::User()->email;
+          echo "<br>";
+          echo $insdata->fullname;
+          echo "<br>";
+          echo $insdata->email;
+          echo "<br>";
+          echo $insdata->id;
+          echo "<br>";
+
+          $record=DB::connection('mysql')->table('directory')
+                                         ->insert(
+                                [
+                                'fullname'=>$insdata->fullname,
+                                'email'=>$insdata->email,
+                                'intercom'=>$insdata->intercom,
+                                'gsm'=>$insdata->gsm,
+                                'company'=>$insdata->company,
+                                'department'=>$insdata->department,
+                                'position'=>$insdata->position,
+                                'location'=>$insdata->location
+                                ]
+                                );
+                                echo "İşlem tamamlandı!";
+                                echo "<br>";
+                                echo "<a href='https://digital.palmet.com'>Palmet Digital AnaSayfa</a>";
+                                            
+                                //Directory Insert Data - END
+          }
 
 }
 ?>

@@ -17,7 +17,8 @@ zoom: 80%; /* Webkit browsers */
   </head>
   <body>
     <div class="container">
-      <h4>DataSet Page</h4>
+      <h4>Rehber Bilgi Güncelleme Ekranı</h4>
+      <br>
 
       <form method="post">
       @CSRF

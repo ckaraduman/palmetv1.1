@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 use App\Mail\SendMail;
+use App\Mail\SendMail_Gsm;
 
 class MailController extends Controller
 {

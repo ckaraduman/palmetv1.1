@@ -4,6 +4,7 @@
 @section('title', 'Palmet Digital') <!-- şablona bilgi göndermek için -->
 <body>
     <div class="container">
+      <br>
   <p class="fs-3">Yardım Talep Formu</p>
   <hr>
     </div>
